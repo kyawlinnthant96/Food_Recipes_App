@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "62656939109",
+    "project_id": "food-recipes-app-161d2",
+    "storage_bucket": "food-recipes-app-161d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62656939109:android:cdb68d44e64b5587b4b28c",
+        "android_client_info": {
+          "package_name": "com.letcook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "62656939109-8eu43dan2eaer9s50k24o29olgnbr8qm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0Aedy2YVrqxkszEF99l-OmJmrTBNQn2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62656939109-8eu43dan2eaer9s50k24o29olgnbr8qm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

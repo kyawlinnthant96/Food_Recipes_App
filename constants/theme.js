@@ -3,8 +3,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+const {width, height} = Dimensions.get('window');
 
 export const COLORS = {
+  darkBlue: '#34455e',
   darkGreen: '#229879',
   darkLime: '#1A8871',
   lightLime: '#BBD6C5',
@@ -20,6 +22,9 @@ export const COLORS = {
   gray2: '#F8F8F8',
   lightGray: '#F5F6FB',
   lightGray2: '#757575',
+  yellow: '#feb912',
+  yellow2: '#fdc713',
+  yellow3: '#feb70d',
 
   transparentBlack1: 'rgba(2, 2, 2, 0.1)',
   transparentBlack3: 'rgba(2, 2, 2, 0.3)',
@@ -34,29 +39,40 @@ export const COLORS = {
 };
 export const SIZES = {
   // global sizes
-  base: wp(8),
-  font: wp(3),
-  radius: wp(10),
-  padding: wp(10),
+  base: wp(2),
+  font: wp(5),
+  radius: wp(3),
+  padding: wp(6),
+  grandientHeight: hp(20),
+  vertical: hp(2),
+  baseGap: hp(3),
+  gap: hp(1.5),
 
   // font sizes
-  largeTitle: wp(18),
-  h1: wp(16),
-  h2: wp(14),
-  h3: wp(12),
-  h4: wp(10),
-  body1: wp(16),
-  body2: wp(14),
-  body3: wp(12),
-  body4: wp(10),
-  body5: wp(8),
+  largeTitle: wp(10),
+  h1: wp(8),
+  h2: wp(7),
+  h3: wp(6),
+  h4: wp(5),
+  h5: wp(3),
+  body1: wp(8),
+  body2: wp(7),
+  body3: wp(6),
+  body4: wp(5),
+  body5: wp(4),
+  width,
+  height,
 };
 export const FONTS = {
-  largeTitle: {fontFamily: 'Roboto-Black', fontSize: SIZES.largeTitle},
+  largeTitle: {
+    fontFamily: 'Roboto-Black',
+    fontSize: SIZES.largeTitle,
+  },
   h1: {fontFamily: 'Roboto-Black', fontSize: SIZES.h1, lineHeight: 36},
   h2: {fontFamily: 'Roboto-Bold', fontSize: SIZES.h2, lineHeight: 30},
   h3: {fontFamily: 'Roboto-Bold', fontSize: SIZES.h3, lineHeight: 22},
   h4: {fontFamily: 'Roboto-Bold', fontSize: SIZES.h4, lineHeight: 22},
+  h5: {fontFamily: 'Roboto-Bold', fontSize: SIZES.h5, lineHeight: 18},
   body1: {fontFamily: 'Roboto-Regular', fontSize: SIZES.body1, lineHeight: 36},
   body2: {fontFamily: 'Roboto-Regular', fontSize: SIZES.body2, lineHeight: 30},
   body3: {fontFamily: 'Roboto-Regular', fontSize: SIZES.body3, lineHeight: 22},

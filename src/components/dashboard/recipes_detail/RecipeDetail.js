@@ -15,8 +15,6 @@ import {getCategoryName} from '@data/MockData';
 
 const RecipeDetail = props => {
   const {data, goIngAction, backAction} = props;
-  console.log(data);
-
   return (
     <>
       <ScrollView>

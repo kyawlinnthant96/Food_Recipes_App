@@ -11,6 +11,8 @@ import Bookmark from '@assets/icons/Bookmark';
 // Style
 import styles from './style';
 import {COLORS} from '@constants';
+// data
+import {getCategoryName} from '@data/MockData';
 
 const RecipeLists = props => {
   const {data, catData, bookMarkAction, recDetailAction} = props;
@@ -28,18 +30,20 @@ const RecipeLists = props => {
               source={{uri: item.photo_url}}>
               {/* Top */}
               <View style={styles.top}>
-                <View style={styles.catContaier}>
-                  <Text style={styles.catText}>{catData.name}</Text>
-                </View>
+                <TouchableOpacity
+                  style={styles.catContaier}
+                  onPress={() => catData(item.categoryId)}>
+                  <Text style={styles.catText}>
+                    {getCategoryName(item.categoryId)}
+                  </Text>
+                </TouchableOpacity>
                 <View style={styles.icon}>
                   <TouchableOpacity
                     onPress={() => bookMarkAction(item.recipeId)}>
                     <Bookmark
                       width={40}
                       height={40}
-                      color={
-                        item.isBookMark ? COLORS.darkLime : COLORS.lightGray
-                      }
+                      color={item.isBookMark ? COLORS.darkLime : COLORS.white}
                     />
                   </TouchableOpacity>
                 </View>
@@ -65,7 +69,6 @@ const RecipeLists = props => {
     <FlatList
       data={data}
       numColumns={2}
-      style={{flexDirection: 'row'}}
       keyExtractor={(item, index) => index.toString()}
       renderItem={renderComponents}
       contentContainerStyle={{paddingBottom: 80}}

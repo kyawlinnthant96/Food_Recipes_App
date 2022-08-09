@@ -16,7 +16,7 @@ import * as actionRec from '@store/action/recipes';
 
 // data
 import {recipes, ingredients, categories} from '@data/SampleData';
-import {getNumberOfRecipes} from '@data/MockData';
+import {getNumberOfRecipes, getCategoryName} from '@data/MockData';
 
 // Styles
 import styles from './style';
@@ -32,7 +32,8 @@ const CategoryList = ({navigation}) => {
   }, []);
 
   const detailList = data => {
-    navigation.navigate('CatDetail', {cat: data});
+    const title = data.name;
+    navigation.navigate('CatDetail', {data, title});
   };
 
   const renderComponent = ({item}) => {

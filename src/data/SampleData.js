@@ -20,6 +20,8 @@ export const recipes = [
       [45, '1'],
       [19, '3'],
     ],
+    isBookMark: false,
+
     description:
       'Rub the salt, turmeric and ginger into the chicken pieces and set aside.In a large deep frying pan, skillet or Dutch oven, heat the cooking oil, then add the bay leaves and one tablespoon of chopped onion, lowering the heat the second they brown. Add the rest of the onion and garlic, stirring continuously, then add the chilli powder and half the curry powder, continuing to stir over low heat.Add the chicken pieces, increase the heat slightly, then cover and cook until the chicken starts to brown. nce the chicken begins to brown, stir, then add two cups of water, lower the heat, cover, and simmer until the chicken is cooked through. Add the rest of the curry powder and continue to cook uncovered until the gravy has reduced and thickened.Serve with Burmese coconut rice, a relish and salads.',
   },
@@ -45,6 +47,8 @@ export const recipes = [
       [11, '1'],
       [3, '2'],
     ],
+    isBookMark: false,
+
     description:
       "Heat 4 tablespoons of the oil in a large saucepan over a medium-high heat and add the beef. Fry for 20 minutes, turning the cubes from time to time so they don’t stick to the pan. Juices will seep out but these will reduce down and the meat will brown.Meanwhile, add the base ingredients along with 1 tablespoon of water to a blender or food processor.\n\n Blitz to a rough paste.Transfer the meat from the pan to a dish and set aside. Add the remaining 4 tablespoons of oil to the pan used to brown the beef. Heat over a medium-high heat and add the onion-tomato paste. \n\nAdd the seasonings, stir and then fry for 5 minutes until fragrant. Add the beef and 1.5 litres of water and cover the pan with a lid. Turn the heat down to medium-low and cook for 2½ hours until the beef is tender and falling apart, stirring occasionally to stop the curry from sticking to the base of the pan.When it's ready, serve the curry with steamed rice, any of the soups and a vegetable dish or salad to balance the richness. It also goes well with Indian breads, such as naan, puri and paratha.",
   },
@@ -69,6 +73,8 @@ export const recipes = [
       [52, '1'],
       [53, '1'],
     ],
+    isBookMark: false,
+
     description:
       'Wash the pork belly under cold running water, then transfer to a large stockpot and cover with water that’s been lightly seasoned with salt. Bring to the boil, then drain and wash the pork belly and stockpot of any scum. Repeat this coldblanching process once more, then set the washed pork belly aside. This will remove impurities from the meat, giving you a clear final sauce and reducing the cooking time. If you prefer to skip this step, that’s fine; as mentioned, the cook time will be longer and the final broth will be cloudy, but the finished dish will be equally delicious.\nIn a pestle and mortar, pound the coriander root, garlic, peppercorns and 1 teaspoon of salt to a coarse paste. Heat the pork fat in a wok or heavy-based saucepan over a medium heat. Add the paste and fry for 3–5 minutes until aromatic and fragrant, then add the blanched pork belly and begin to sear and lightly colour the meat all over, stirring all the while to prevent the meat from catching and burning.\nAdd the sugar, black soy sauce, star anise, cassia bark, cardamom pods and bay leaves. Allow the sugar to melt and caramelise with the pork belly; it should stick and cling to the meat. Stir to evenly coat all the meat with the caramel.\nAdd the stock, then season with the light soy sauce. Add the dried mandarin peel and knotted pandan leaf, if using. Bring to the boil, then reduce to a simmer and cook for 2–3 hours until the pork belly is tender but holds its shape with a slight bounce, topping up the pan with extra stock or water as required during the cooking time to keep the meat covered.\n Increase the heat and cook for another 10–15 minutes to reduce the braising liquor by half so that it’s thick and glossy and coats the meat. Be sure to stir the meat during this step so that it doesn’t catch and burn on the base of the pan. The desired consistency should coat the back of a spoon, and it should taste sweet and savoury with a peppery finish. Top with snipped coriander sprigs and serve.',
   },
@@ -93,6 +99,8 @@ export const recipes = [
       [44, '5'],
       [23, '5'],
     ],
+    isBookMark: false,
+
     description:
       'To prepare dressing: Laphet in hot water for 3 minutes. Drain and press excess water out of the laphet. Let cool to room temperature.\n Combine the laphet, fresh garlic and salt in a mini food processor; pulse to combine. With the motor running, drizzle in 3 tablespoons oil and vinegar.\nTo assemble salad: Make a bed of cabbage on a round, rimmed serving platter or in a shallow bowl. Spoon the dressing into the center. Arrange piles of tomatoes, jalapeño (or serrano), fried garlic, peanuts and split peas around the dressing. Drizzle oil, lime juice and fish sauce over the top and sprinkle with cilantro, shrimp powder (if using) and crushed red pepper. Mix tableside with 2 forks.',
   },
@@ -113,6 +121,8 @@ export const recipes = [
       [33, '2'],
       [58, '0.5'],
     ],
+    isBookMark: false,
+
     description:
       'Position rack in upper third of oven; preheat broiler.Meanwhile, whisk eggs, salt and pepper in a bowl. Pour the eggs over the vegetables in the pan. Cook, lifting the edges to allow uncooked egg from the middle to flow underneath, until nearly set, about 2 minutes. Arrange mozzarella and sun-dried tomatoes on top and place the skillet under the broiler until the eggs are slightly browned, 1 1/2 to 2 minutes. Let stand for 3 minutes. Top with basil.To release the frittata from the pan, run a spatula around the edge, then underneath, until you can slide or lift it out onto a cutting board or serving plate. Cut into 4 slices and serve.',
   },
@@ -137,6 +147,8 @@ export const recipes = [
       [60, '2'],
       [0, '6'],
     ],
+    isBookMark: false,
+
     description:
       'Place the dried noodles in a large bowl of cold water.Bring a large pot of water to boil. Turn off the heat, and place the dried rice noodles.Heat oil in a large wok. Fry the onions, garlic and ginger for 6 to 8 minutes.Add chili powder and continue to stir fry for a minute.Add the chopped chicken (or pork), tomatoes, tomato paste, and stir well. Add soy sauce and sugar and cook over a medium heat for 15 minutes until all tomatoes are crushed.Put a handful of noodles into a bowl. Add 4 tablespoons of chicken curry, crushed peanuts and adjust with soy sauce to taste. Add a few spring onions. Serve immediately with pickled mustard greens (optional).',
   },
@@ -148,7 +160,8 @@ export const recipes = [
       'https://www.foodrepublic.com/wp-content/uploads/2017/05/mohinga.jpg',
     time: '40',
     ingredients: [
-      [40, '300'][(37, '3')],
+      [40, '300'],
+      [37, '3'],
       [9, '1'],
       [34, '2'],
       [38, '5'],
@@ -162,6 +175,8 @@ export const recipes = [
       [24, '2'],
       [35, '1'],
     ],
+    isBookMark: false,
+
     description:
       'Heat the oven to 350°F. Spread the rice across a rimmed baking pan and bake, giving the pan an occasional stir, until the rice is an even golden color and aromatic, 20 minutes. Cool to room temperature and then pulverize in a clean coffee grinder.To make the broth, select a large wide pot that will fit the catfish comfortably with room to spare. (An 8-quart pot works well.) Add the water, lemongrass, ginger, bay leaves, black and white pepper, and salt and bring to a boil. Lower the heat and simmer for 15 minutes.Carefully lower the fish into the pot. The fish may not be completely covered in water, but that’s okay. Bring the pot to a brisk simmer, lower the heat, and cook gently for 15 minutes. Using tongs, carefully turn the fish over or at least rotate it slightly to cook the side that was sticking out of the water. Simmer for another 5 minutes or until the fish flesh pulls away cleanly from the bone. Using tongs and a spider or slotted spoon, lift the fish out of the broth and transfer to a bowl. Turn off the heat and let the broth sit on the stove....',
   },
@@ -182,6 +197,8 @@ export const recipes = [
       [51, '0.5'],
       [63, '2'],
     ],
+    isBookMark: false,
+
     description:
       'Preheat oven to 320F/160C.In a large nonstick saucepan, mix the semolina with the coconut cream by adding coconut cream one cup (250ml) at a time and stirring well while incorporating.Add the caster sugar and continue stirring.Bring to a boil over medium heat, stirring constantly.When the mixture begins to thicken, add the butter and mix well.Stop cooking when the dough pulls away from the sides of the pan. Add salt, ground cardamom and mix.Separate the whites from the egg yolks.Stir the yolks in the preparation, one by one, mixing well after adding each yolk.Beat the egg whites until stiff and gently incorporate them into the preparation.Pour into a baking pan lined with parchment paper and bake for 45 minutes in the preheated oven.Sprinkle with sesame seeds right out of the oven.Sanwin makin can be unmolded and eaten warm or cold. Cut into diamond shapes before serving.',
   },
@@ -206,6 +223,7 @@ export const recipes = [
       [9, '0.5'],
       [66, '7'],
     ],
+    isBookMark: false,
     description:
       'In a large bowl, combine the flour and salt, then add the eggs. Mix well with a wooden spoon.Slowly add the water and continue to stir the mixture until a smooth dough forms.Adjust the amount of water according to the water absorption capacity of the flour and the quality of the water. Stop adding water when there is no more dry flour in the bowl.Roll out the dough and place it in a large bowl, cover with plastic wrap and let it rest for 15 minutes. On a lightly floured work surface, knead the dough again for about 10 to 15 minutes until smooth and elastic.Cover it with a cloth and let it rest for 30 minutes Divide the dough into 2 equal portions. Lower it to about ⅛ inch (3 mm) thick. Fold the dough into quarters, cover it again with plastic wrap and let it rest for 30 minutes.Simultaneously proceed in exactly the same way with the other half of the dough.\n\n Generously sprinkle the work surface with cornstarch and place 1 dough on top. Pass it through the pasta machine and take out very thin trips that must be cut with a cookie cutter. Preferably, the cookie cutter should be square, about 3 inches (8 cm).Continue in this way until all the dough is used up.Set aside in the fridge.Garnish and soup Soak the dried shiitake mushrooms in cool water beforehand. Wash, remove their stems and mince them.Rinse the small, dried, unshelled shrimp and drain them.Break 2 eggs into a bowl and extract the yolk. Reserve the egg white for later.In a bowl, combine the minced meat with the sliced ​​shiitake mushrooms, a pinch of salt, 1 teaspoon of chicken broth powder and half the starch. Stir vigorously. In another bowl, place the shrimp cut into large pieces.Add the lightly beaten egg whites with 1 teaspoon of plaice powder, salt, remaining chicken broth powder, and remaining starch. Knead until the shrimp reach a sticky consistency.',
   },

@@ -55,9 +55,12 @@ const DashboardStack = ({navigation, route}) => {
       <Stack.Screen
         name="CatDetail"
         component={CategoryDetailScreen}
-        options={{
-          title: 'Recipes Lists',
-        }}
+        options={({route}) => ({
+          title: route.params.title,
+          headerTitleStyle: {
+            ...FONTS.h4,
+          },
+        })}
       />
       <Stack.Screen
         name="ItemDetail"

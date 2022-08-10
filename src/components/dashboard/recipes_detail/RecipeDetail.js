@@ -6,15 +6,16 @@ import styles from './style';
 import {COLORS} from '@constants';
 import Clock from '@assets/icons/Clock';
 import BackArrow from '@assets/icons/BackArrow';
-
 // components
 import CustomPressable from '../../custom/button/CustomPressable';
 
 // data
 import {getCategoryName} from '@data/MockData';
+import {useSelector} from 'react-redux';
 
 const RecipeDetail = props => {
   const {data, goIngAction, backAction} = props;
+  const categories = useSelector(state => state.catList.categoryLists);
   return (
     <>
       <ScrollView>
@@ -32,7 +33,7 @@ const RecipeDetail = props => {
           <View style={styles.infoContainer}>
             <Text style={styles.mainTitle}>{data.title}</Text>
             <Text style={styles.catTitle}>
-              {getCategoryName(data.categoryId).toUpperCase()}
+              {getCategoryName(data.categoryId, categories).toUpperCase()}
             </Text>
             <View style={styles.timeContainer}>
               <Clock width={20} height={20} color={COLORS.black} />

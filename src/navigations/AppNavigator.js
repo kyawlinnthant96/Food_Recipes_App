@@ -21,6 +21,7 @@ const AppNavigator = () => {
   const [user, setUser] = useState();
   const [info, setInfo] = useState('');
   const [splash, setSplash] = useState(true);
+  const [optionBox, setOptionBox] = useState(false);
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(userSession);
@@ -52,6 +53,7 @@ const AppNavigator = () => {
 
   // context
   const context = {
+    optionBox,
     info,
     user,
     lang,
@@ -60,6 +62,9 @@ const AppNavigator = () => {
     },
     getUserInfo: value => {
       setInfo(value);
+    },
+    getOptionBox: value => {
+      setOptionBox(value);
     },
   };
 

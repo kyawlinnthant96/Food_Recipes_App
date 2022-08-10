@@ -7,8 +7,9 @@ import {COLORS, FONTS, SIZES} from '@constants';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: COLORS.white,
+    width: wp(100),
+    height: hp(10),
+    backgroundColor: COLORS.darkLime,
   },
 });
 

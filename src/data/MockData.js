@@ -1,6 +1,4 @@
-import {recipes, ingredients, categories} from './SampleData';
-
-export const getNumberOfRecipes = categoryID => {
+export const getNumberOfRecipes = (categoryID, recipes) => {
   let count = 0;
   recipes.map(data => {
     if (data.categoryId === categoryID) {
@@ -10,7 +8,7 @@ export const getNumberOfRecipes = categoryID => {
   return count;
 };
 
-export const getRecipes = categoryId => {
+export const getRecipes = (categoryId, recipes) => {
   const recipesArray = [];
   recipes.map(data => {
     if (data.categoryId == categoryId) {
@@ -20,7 +18,7 @@ export const getRecipes = categoryId => {
   return recipesArray;
 };
 
-export const getCategoryName = categoryId => {
+export const getCategoryName = (categoryId, categories) => {
   let name;
   categories.map(data => {
     if (data.id == categoryId) {
@@ -30,7 +28,7 @@ export const getCategoryName = categoryId => {
   return name;
 };
 
-export const getIngredientUrl = ingredientID => {
+export const getIngredientUrl = (ingredientID, ingredients) => {
   let url;
   ingredients.map(data => {
     if (data.ingredientId == ingredientID) {
@@ -40,7 +38,7 @@ export const getIngredientUrl = ingredientID => {
   return url;
 };
 
-export const getAllIngredients = idArray => {
+export const getAllIngredients = (idArray, ingredients) => {
   const ingredientsArray = [];
   idArray.map(index => {
     ingredients.map(data => {
@@ -52,7 +50,7 @@ export const getAllIngredients = idArray => {
   return ingredientsArray;
 };
 
-export const getIngredientName = ingredientID => {
+export const getIngredientName = (ingredientID, ingredients) => {
   let name;
   ingredients.map(data => {
     if (data.ingredientId == ingredientID) {
@@ -62,7 +60,7 @@ export const getIngredientName = ingredientID => {
   return name;
 };
 
-export const getRecipesByIngredient = ingredientId => {
+export const getRecipesByIngredient = (ingredientId, recipes) => {
   const recipesArray = [];
   recipes.map(data => {
     data.ingredients.map(index => {
@@ -72,4 +70,14 @@ export const getRecipesByIngredient = ingredientId => {
     });
   });
   return recipesArray;
+};
+
+export const getBookmarkList = recArray => {
+  const bookmarkList = [];
+  recArray.map(data => {
+    if (data.isBookMark) {
+      bookmarkList.push(data);
+    }
+  });
+  return bookmarkList;
 };

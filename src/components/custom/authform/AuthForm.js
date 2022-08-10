@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -180,60 +181,3 @@ const AuthForm = props => {
 };
 
 export default AuthForm;
-/* const AuthForm = props => {
-  const {onPress, authRoute} = props;
-  const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const local = useLocal();
-
-  return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.inner}>
-          <Text style={styles.header}>{authRoute}</Text>
-          {authRoute === 'Login' ? null : (
-            <TextInput
-              autoCapitalize="none"
-              autoCorrect={false}
-              placeholder={local.placeholderUsername}
-              placeholderTextColor={COLORS.lime}
-              style={styles.textInput}
-              value={userName}
-              onChangeText={setUserName}
-            />
-          )}
-          <TextInput
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder={local.placeholderEmail}
-            placeholderTextColor={COLORS.lime}
-            style={styles.textInput}
-            value={email}
-            onChangeText={setEmail}
-          />
-          <TextInput
-            secureTextEntry
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder={local.placeholderPassword}
-            placeholderTextColor={COLORS.lime}
-            style={styles.textInput}
-            value={password}
-            onChangeText={setPassword}
-          />
-          <CustomPressable
-            title={authRoute}
-            titleStyle={styles.titleStyle}
-            btnStyle={styles.btnStyle}
-            onPress={() => onPress({userName, email, password})}
-          />
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
-  );
-};
-
-export default AuthForm; */

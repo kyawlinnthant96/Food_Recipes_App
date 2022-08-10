@@ -16,7 +16,7 @@ import * as actionRec from '@store/action/recipes';
 
 // data
 import {recipes, ingredients, categories} from '@data/SampleData';
-import {getNumberOfRecipes, getCategoryName} from '@data/MockData';
+import {getNumberOfRecipes} from '@data/MockData';
 
 // Styles
 import styles from './style';
@@ -24,6 +24,7 @@ import styles from './style';
 const CategoryList = ({navigation}) => {
   const dispatch = useDispatch();
   const catData = useSelector(state => state.catList.categoryLists);
+  const recipesData = useSelector(state => state.recList.recipesList);
 
   useEffect(() => {
     dispatch(actionCat.addToCat(categories));
@@ -38,7 +39,7 @@ const CategoryList = ({navigation}) => {
 
   const renderComponent = ({item}) => {
     return (
-      <TouchableOpacity activeOpacity={0.7} onPress={() => detailList(item)}>
+      <TouchableOpacity activeOpacity={0.7} onPress={() => detailList(item.id)}>
         <SafeAreaView style={styles.listContainer}>
           <ImageBackground
             source={{uri: item.photo_url}}
@@ -47,7 +48,7 @@ const CategoryList = ({navigation}) => {
             <View style={styles.titleContainer}>
               <Text style={styles.catTitle}>{item.name}</Text>
               <Text style={styles.numberOfRecipes}>
-                {getNumberOfRecipes(item.id)} recipes
+                {getNumberOfRecipes(item.id, recipesData)} recipes
               </Text>
             </View>
           </ImageBackground>

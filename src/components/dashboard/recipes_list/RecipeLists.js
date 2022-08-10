@@ -13,9 +13,11 @@ import styles from './style';
 import {COLORS} from '@constants';
 // data
 import {getCategoryName} from '@data/MockData';
+import {useSelector} from 'react-redux';
 
 const RecipeLists = props => {
   const {data, catData, bookMarkAction, recDetailAction} = props;
+  const categories = useSelector(state => state.catList.categoryLists);
 
   const renderComponents = ({item}) => {
     return (
@@ -34,7 +36,7 @@ const RecipeLists = props => {
                   style={styles.catContaier}
                   onPress={() => catData(item.categoryId)}>
                   <Text style={styles.catText}>
-                    {getCategoryName(item.categoryId)}
+                    {getCategoryName(item.categoryId, categories)}
                   </Text>
                 </TouchableOpacity>
                 <View style={styles.icon}>

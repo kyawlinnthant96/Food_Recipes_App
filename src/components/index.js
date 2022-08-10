@@ -4,7 +4,8 @@ import setToastMsg from './custom/toast/Toast';
 import RecipeLists from './dashboard/recipes_list/RecipeLists';
 import IngredientDetail from './dashboard/ingredients_detail/IngredientDetail';
 import RecipeDetail from './dashboard/recipes_detail/RecipeDetail';
-
+import HeaderBar from './custom/header/HeaderBar';
+import Bookmark from './bookmark/Bookmark';
 export {
   AuthFrom,
   CustomPressable,
@@ -12,4 +13,6 @@ export {
   RecipeLists,
   RecipeDetail,
   IngredientDetail,
+  HeaderBar,
+  Bookmark,
 };

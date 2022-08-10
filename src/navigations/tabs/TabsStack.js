@@ -28,12 +28,12 @@ const TabsStack = () => {
         screenOptions={{
           tabBarShowLabel: false,
           tabBarStyle: styles.tabStyle,
+          headerShown: false,
         }}>
         <Tab.Screen
           name="Home"
           component={DashboardStack}
           options={{
-            headerShown: false,
             tabBarIcon: ({focused}) => (
               <View style={styles.tabContainer}>
                 <Home
@@ -50,7 +50,6 @@ const TabsStack = () => {
           name="Search"
           component={RecipesStack}
           options={{
-            headerShown: false,
             tabBarIcon: ({focused}) => (
               <View style={styles.tabContainer}>
                 <Search
@@ -67,7 +66,6 @@ const TabsStack = () => {
           name="Collect"
           component={BookmarkStack}
           options={{
-            title: 'Bookmark',
             tabBarIcon: ({focused}) => (
               <View style={styles.tabContainer}>
                 <Bookmark
@@ -84,7 +82,6 @@ const TabsStack = () => {
           name="Info"
           component={ProfileStack}
           options={{
-            headerShown: false,
             tabBarIcon: ({focused}) => (
               <View style={styles.tabContainer}>
                 <Setting

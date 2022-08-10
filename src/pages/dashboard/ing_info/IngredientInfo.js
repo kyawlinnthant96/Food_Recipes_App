@@ -11,21 +11,28 @@ import {
   getIngredientUrl,
   getCategoryName,
 } from '@data/MockData';
+import {useDispatch, useSelector} from 'react-redux';
+import * as actionRec from '../../../store/action/recipes';
 
 const IngredientInfo = ({route, navigation}) => {
   const ingredientId = route?.params?.ingredient;
-  const ingredientUrl = getIngredientUrl(ingredientId);
-  const recipeByIng = getRecipesByIngredient(ingredientId);
+  const categories = useSelector(state => state.catList.categoryLists);
+  const ingredient = useSelector(state => state.ingList.ingredientsList);
+  const recipes = useSelector(state => state.recList.recipesList);
+  const dispatch = useDispatch();
+
+  const ingredientUrl = getIngredientUrl(ingredientId, ingredient);
+  const recipeByIng = getRecipesByIngredient(ingredientId, recipes);
   const title = route?.params?.title;
 
-  const bookMarkHandler = () => {
-    console.log('first');
+  const bookMarkHandler = itemId => {
+    dispatch(actionRec.bookUpdateRecList(itemId));
   };
   const recDetailHandler = data => {
     navigation.navigate('ItemDetail', {data});
   };
   const goToCatData = data => {
-    const title = getCategoryName(data);
+    const title = getCategoryName(data, categories);
     navigation.navigate('CatDetail', {data, title});
   };
 

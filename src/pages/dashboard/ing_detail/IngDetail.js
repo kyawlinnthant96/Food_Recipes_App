@@ -17,8 +17,7 @@ const IngDetail = ({route, navigation}) => {
   const ingredientsArray = getAllIngredients(item, ingList);
 
   const onPressIngredients = item => {
-    console.log('first');
-    const title = getIngredientName(item.ingredientId);
+    const title = getIngredientName(item.ingredientId, ingList);
     const ingredient = item.ingredientId;
     navigation.navigate('IngInfo', {ingredient, title});
   };

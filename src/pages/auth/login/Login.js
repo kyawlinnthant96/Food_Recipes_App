@@ -11,6 +11,7 @@ import {localStorage} from '@utils/localStorage';
 import {DataContext} from '@context/DataContext/DataContext';
 // hooks
 import {useLocal} from '@hooks';
+import {ScrollView} from 'react-native';
 
 const Login = ({route, navigation}) => {
   const {routeName} = route.params;

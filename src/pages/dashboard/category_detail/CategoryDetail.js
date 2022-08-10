@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as actionRec from '../../../store/action/recipes';
 // components
-import {RecipeLists} from '@components';
+import {RecipeLists, setToastMsg} from '@components';
 // data
 import {getRecipes, getCategoryName} from '@data/MockData';
 
@@ -13,23 +13,13 @@ import styles from './style';
 
 const CategoryDetail = ({route, navigation}) => {
   const categoryData = route.params?.data;
-  let recByCat = getRecipes(categoryData?.id);
-  const [recData, setRecData] = useState(recByCat);
+  const recipes = useSelector(state => state.recList.recipesList);
+  const categories = useSelector(state => state.catList.categoryLists);
+  let recByCat = getRecipes(categoryData, recipes);
   const dispatch = useDispatch();
 
   const bookMarkHandler = itemId => {
-    //recipeId
-    let index = recData.findIndex(x => x.recipeId === itemId);
-    let spreadData = {...recData};
-    console.log(recData);
-    // let dump;
-    // for (const data of recData) {
-    //   if (data.recipeId === itemId) {
-    //     data.isBookMark = !data.isBookMark;
-    //   }
-    // }
-    // dump = recData;
-    // console.log(dump);
+    dispatch(actionRec.bookUpdateRecList(itemId));
   };
 
   const recDetailHandler = data => {
@@ -37,14 +27,14 @@ const CategoryDetail = ({route, navigation}) => {
   };
 
   const goToCatData = data => {
-    const title = getCategoryName(data);
+    const title = getCategoryName(data, categories);
     navigation.navigate('CatDetail', {data, title});
   };
 
   return (
     <View style={styles.container}>
       <RecipeLists
-        data={recData}
+        data={recByCat}
         catData={goToCatData}
         bookMarkAction={bookMarkHandler}
         recDetailAction={recDetailHandler}

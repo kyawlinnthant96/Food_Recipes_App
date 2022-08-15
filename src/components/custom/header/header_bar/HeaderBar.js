@@ -3,14 +3,19 @@ import React from 'react';
 
 // style
 import styles from './style';
+// hook
+import {useLocal} from '../../../../hooks';
 
 const HeaderBar = (props) => {
   const {userName, userPhoto} = props;
+  const local = useLocal();
   return (
     <View style={styles.container}>
       <View style={styles.welcomText}>
-        <Text style={styles.wel1}>Hello {userName}</Text>
-        <Text style={styles.wel2}>What you want to cook today?</Text>
+        <Text style={styles.wel1}>
+          {local.greet} {userName}
+        </Text>
+        <Text style={styles.wel2}>{local.greet2}</Text>
       </View>
       <TouchableOpacity>
         <Image

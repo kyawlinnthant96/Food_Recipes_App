@@ -17,6 +17,8 @@ import {DataContext} from '../../../context/DataContext/DataContext';
 
 // storage
 import {localStorage} from '../../../utils/localStorage';
+// hooks
+import {useLocal} from '../../../hooks';
 
 // style
 import styles from './style';
@@ -24,12 +26,13 @@ import Camera from '@assets/icons/Camera';
 import Gallery from '@assets/icons/Gallery';
 
 const EditProfile = ({navigation}) => {
+  const local = useLocal();
   const {info, getUserInfo} = useContext(DataContext);
   const [animation, setAnimation] = useState(new Animated.Value(0));
   const [userInfo, setUserInfo] = useState({
-    username: '',
-    about: '',
-    photo_url: null,
+    username: info.username,
+    about: info.about,
+    photo_url: info.photo_url,
   });
 
   const screenHeight = Dimensions.get('window').height;
@@ -77,8 +80,8 @@ const EditProfile = ({navigation}) => {
 
   const onCamera = () => {
     ImagePicker.openCamera({
-      width: 300,
-      height: 400,
+      compressImageMaxWidth: 300,
+      compressImageMaxHeight: 300,
       cropping: true,
     })
       .then((image) => {
@@ -95,8 +98,8 @@ const EditProfile = ({navigation}) => {
 
   const onGallery = () => {
     ImagePicker.openPicker({
-      width: 300,
-      height: 400,
+      compressImageMaxWidth: 300,
+      compressImageMaxHeight: 300,
       cropping: true,
     })
       .then((image) => {
@@ -131,13 +134,13 @@ const EditProfile = ({navigation}) => {
       if (userInfo.username.length && userInfo.photo_url.length > 0) {
         getUserInfo(data);
         localStorage.setItem('@UserData:info', JSON.stringify(data));
-        setToastMsg('Update Profile Successful');
+        setToastMsg(local.updateProSuccess);
         navigation.goBack();
       } else {
-        setToastMsg('Please fill the require field');
+        setToastMsg(local.validLogError);
       }
     } catch (error) {
-      setToastMsg('Something wrong');
+      setToastMsg(local.error);
       console.log(error.message);
     }
   };
@@ -160,28 +163,28 @@ const EditProfile = ({navigation}) => {
 
       <View style={styles.info}>
         <View style={styles.infoBox}>
-          <Text style={styles.label}>Display Name</Text>
+          <Text style={styles.label}>{local.placeholderUserNameTitle}</Text>
           <TextInput
             value={userInfo.username}
             onChangeText={nameInputChange}
             style={styles.inputField}
-            placeholder="Enter Name"
+            placeholder={local.placeholderUsername}
           />
         </View>
         <View style={styles.infoBox}>
-          <Text style={styles.label}>About</Text>
+          <Text style={styles.label}>{local.bioTitle}</Text>
           <TextInput
             value={userInfo.about}
             onChangeText={aboutInputChange}
             style={[styles.inputField, {textAlignVertical: 'top', height: 200}]}
-            placeholder="Enter About me"
+            placeholder={local.bioPlaceholder}
             multiline={true}
             numberOfLines={5}
           />
         </View>
       </View>
       <CustomPressable
-        title="Save "
+        title={local.updateBtn}
         btnStyle={styles.btnStyle}
         titleStyle={styles.titleStyle}
         onPress={() => userInfoAction(userInfo)}

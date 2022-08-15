@@ -26,7 +26,9 @@ const Trending = (props) => {
         <Image
           style={styles.image}
           resizeMode="cover"
-          source={{uri: item.photo_url}}
+          source={{
+            uri: item.photo_url,
+          }}
         />
         <View style={styles.infoContainer}>
           <Text style={styles.catText}>

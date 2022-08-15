@@ -6,8 +6,11 @@ import * as actionIng from '../../../store/action/ingredients';
 // style
 // components
 import {IngredientList, setToastMsg} from '@components';
+// hooks
+import {useLocal} from '../../../hooks';
 
 const PickIngredient = ({navigation}) => {
+  const local = useLocal();
   const dispatch = useDispatch();
   const curr = useSelector((state) => state.ingList.pickIngredient);
 
@@ -16,12 +19,12 @@ const PickIngredient = ({navigation}) => {
     try {
       if (data[1].length > 0) {
         dispatch(actionIng.pickIngList(data));
-        setToastMsg('Add ingredent');
+        setToastMsg(local.addIngText);
       } else {
-        setToastMsg('Please fill the require field');
+        setToastMsg(local.validLogError);
       }
     } catch (error) {
-      setToastMsg('Something Wrong');
+      setToastMsg(local.error);
     }
   };
 

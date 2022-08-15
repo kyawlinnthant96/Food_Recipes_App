@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   inputFieldTime: {
+    flex: 1,
     backgroundColor: '#ddd',
     marginLeft: hp(3),
     borderRadius: hp(5),
@@ -210,6 +211,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomLeftRadius: SIZES.radius,
+  },
+  backBtnContent: {
+    position: 'absolute',
+    top: 20,
+    right: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.darkGreen,
+    padding: hp(1),
+    borderRadius: hp(5),
   },
 });
 

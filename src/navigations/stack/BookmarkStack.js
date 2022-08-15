@@ -49,7 +49,11 @@ const BookmarkStack = ({navigation, route}) => {
         },
       }}>
       <Stack.Screen name="Bookmark" component={BookmarkListScreen} />
-      <Stack.Screen name="Create" component={CreateRecipes} />
+      <Stack.Screen
+        name="Create"
+        component={CreateRecipes}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="Edit"
         component={EditRecipes}

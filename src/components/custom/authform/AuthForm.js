@@ -95,14 +95,14 @@ const AuthForm = (props) => {
         <View style={styles.safeContent}>
           <View style={styles.header}>
             <Text style={styles.text_header}>
-              {authRoute === 'Login' ? local.logHeader : local.regHeader}
+              {authRoute === local.login ? local.logHeader : local.regHeader}
             </Text>
           </View>
 
           {/* footer */}
           <View style={styles.footer}>
             {/* UserName */}
-            {authRoute === 'Sign up' ? (
+            {authRoute === local.register ? (
               <>
                 <Text style={styles.text_footer}>
                   {local.placeholderUserNameTitle}
@@ -170,7 +170,9 @@ const AuthForm = (props) => {
               />
             </LinearGradient>
             <CustomPressable
-              title={authRoute === 'Sign up' ? local.login : local.register}
+              title={
+                authRoute === local.register ? local.login : local.register
+              }
               titleStyle={styles.titleStyle2}
               btnStyle={styles.btnStyle2}
               onPress={toNavigate}

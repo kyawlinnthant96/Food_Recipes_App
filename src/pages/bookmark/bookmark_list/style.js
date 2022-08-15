@@ -24,6 +24,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: hp(2),
     borderRadius: hp(5),
   },
+  emptyContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.lightGray,
+  },
+  cardContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cardText: {
+    color: COLORS.gray,
+    ...FONTS.h2,
+  },
 });
 
 export default styles;

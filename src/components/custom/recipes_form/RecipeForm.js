@@ -20,6 +20,9 @@ import {useSelector, useDispatch} from 'react-redux';
 // data
 import {getAllIngredients, getNameArray} from '@data/MockData';
 
+// hook
+import {useLocal} from '../../../hooks';
+
 // style
 import styles from './style';
 import BackArrow from '@assets/icons/BackArrow';
@@ -27,13 +30,16 @@ import Camera from '@assets/icons/Camera';
 import Gallery from '@assets/icons/Gallery';
 import Add from '@assets/icons/Add';
 import Delete from '@assets/icons/Delete';
+import Forward from '@assets/icons/ForwardArrow';
 
 const RecipeForm = (props) => {
+  const local = useLocal();
   const {
     pickIngAction,
     completeRecipeAction,
     deletePickIngAction,
     initialValue,
+    backAction,
   } = props;
   const [animation, setAnimation] = useState(new Animated.Value(0));
   // category list
@@ -54,8 +60,8 @@ const RecipeForm = (props) => {
 
   const onCamera = () => {
     ImagePicker.openCamera({
-      width: 300,
-      height: 400,
+      compressImageMaxWidth: 300,
+      compressImageMaxHeight: 300,
       cropping: true,
     })
       .then((image) => {
@@ -72,8 +78,8 @@ const RecipeForm = (props) => {
 
   const onGallery = () => {
     ImagePicker.openPicker({
-      width: 300,
-      height: 400,
+      compressImageMaxWidth: 300,
+      compressImageMaxHeight: 300,
       cropping: true,
     })
       .then((image) => {
@@ -160,9 +166,12 @@ const RecipeForm = (props) => {
     <>
       <ScrollView style={styles.container}>
         {/* Recipes Data */}
+        <TouchableOpacity style={styles.backBtnContent} onPress={backAction}>
+          <Forward width={30} height={30} />
+        </TouchableOpacity>
 
-        <TouchableOpacity activeOpacity={0.5} onPress={openBox}>
-          <View style={styles.imageContainer}>
+        <View style={styles.imageContainer}>
+          <TouchableOpacity activeOpacity={0.5} onPress={openBox}>
             {data.photo_url ? (
               <View style={styles.addContent}>
                 <Image
@@ -173,11 +182,11 @@ const RecipeForm = (props) => {
               </View>
             ) : (
               <View style={styles.addContent}>
-                <Text>Add Cover Image</Text>
+                <Text>{local.imgCoverText}</Text>
               </View>
             )}
-          </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
+        </View>
         <View style={styles.inputContainer}>
           <SelectDropdown
             data={catNameArr}
@@ -188,7 +197,7 @@ const RecipeForm = (props) => {
               });
             }}
             defaultButtonText={
-              data ?? catId ? catNameArr[data.catId] : 'Select Category'
+              data?.catId ? catNameArr[data.catId] : local.dropDownLabel
             }
             buttonTextAfterSelection={(selectedItem, index) => {
               return selectedItem;
@@ -199,26 +208,26 @@ const RecipeForm = (props) => {
           />
         </View>
         <View style={styles.inputContainer}>
-          <Text style={styles.inputTitle}>Recipes Name</Text>
+          <Text style={styles.inputTitle}>{local.recipeTitle} </Text>
           <TextInput
             style={styles.inputField}
             value={data.recTitle}
             onChangeText={(val) => recInputChange(val)}
-            placeholder="Enter your recipe name here"
+            placeholder={local.placeholderRecipeText}
           />
         </View>
         <View style={styles.inputTimeContainer}>
-          <Text style={styles.inputTitle}>Preparation Time</Text>
+          <Text style={styles.inputTitle}>{local.prepTimeTitle}</Text>
           <TextInput
             style={styles.inputFieldTime}
             value={data.time}
             onChangeText={(val) => timeInputChange(val)}
-            placeholder="Enter Cooking Time"
+            placeholder={local.placeholderPrepTime}
           />
         </View>
         <TouchableOpacity style={styles.addContainer} onPress={pickIngAction}>
           <Add width={20} height={20} />
-          <Text style={styles.addText}>Add ingredients to recipes</Text>
+          <Text style={styles.addText}>{local.addIngBtnText}</Text>
         </TouchableOpacity>
         <View style={styles.line} />
         {currPickIngData.length > 0
@@ -246,12 +255,12 @@ const RecipeForm = (props) => {
             ))
           : null}
         <View style={styles.inputContainer}>
-          <Text style={styles.inputTitle}>Description</Text>
+          <Text style={styles.inputTitle}>{local.descTitle}</Text>
           <TextInput
             value={data.description}
             onChangeText={(val) => descInputChange(val)}
             style={styles.descriInput}
-            placeholder="Enter Description"
+            placeholder={local.placeholderDescText}
             multiline={true}
             numberOfLines={10}
           />
@@ -262,7 +271,7 @@ const RecipeForm = (props) => {
           style={styles.doneContent}
           activeOpacity={0.8}
           onPress={() => completeRecipeAction(data)}>
-          <Text style={styles.doneText}>Done</Text>
+          <Text style={styles.doneText}>{local.recDoneBtn}</Text>
         </TouchableOpacity>
       ) : null}
 
@@ -273,17 +282,17 @@ const RecipeForm = (props) => {
       {/* Image Pick Box  */}
       <View style={[styles.sheet]}>
         <Animated.View style={[styles.popup, slideUp]}>
-          <Text style={styles.popupTitle}>Add a photo</Text>
+          <Text style={styles.popupTitle}>{local.addPhoto}</Text>
           <TouchableOpacity onPress={onCamera} style={styles.popBtnContent}>
             <Camera width={30} height={20} />
-            <Text style={styles.popupBtnText}>Take a photo</Text>
+            <Text style={styles.popupBtnText}>{local.fromCamera}</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={onGallery} style={styles.popBtnContent}>
             <Gallery width={30} height={20} color="#000" />
-            <Text style={styles.popupBtnText}>Choose from gallery</Text>
+            <Text style={styles.popupBtnText}>{local.fromGallery}</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={cancleBox} style={styles.popBtnContent}>
-            <Text style={styles.popupBtnText}>Cancle</Text>
+            <Text style={styles.popupBtnText}>{local.cancle}</Text>
           </TouchableOpacity>
         </Animated.View>
       </View>

@@ -8,8 +8,11 @@ import {RecipeForm, setToastMsg} from '@components';
 import {useDispatch, useSelector} from 'react-redux';
 import * as actionIng from '../../../store/action/ingredients';
 import * as actionRec from '../../../store/action/recipes';
+// hooks
+import {useLocal} from '../../../hooks';
 
 const EditRecipes = ({route, navigation}) => {
+  const local = useLocal();
   const currData = route?.params?.data;
   const dispatch = useDispatch();
   const curPickIngList = useSelector((state) => state.ingList.pickIngredient);
@@ -26,10 +29,14 @@ const EditRecipes = ({route, navigation}) => {
   const delPickIngHandler = (data) => {
     try {
       dispatch(actionIng.remIngList(data));
-      setToastMsg('Remove ingredients');
+      setToastMsg(local.rmvSuccess);
     } catch (error) {
-      setToastMsg('Something wrong');
+      setToastMsg(local.error);
     }
+  };
+
+  const backHandler = () => {
+    navigation.pop();
   };
 
   const editRecipeHandler = (data) => {
@@ -45,10 +52,10 @@ const EditRecipes = ({route, navigation}) => {
     };
     try {
       dispatch(actionRec.updateRecipe(updateData));
-      setToastMsg('Update recipes successful');
+      setToastMsg(local.updateRecSuccess);
       navigation.navigate('CatList');
     } catch (error) {
-      setToastMsg('Something Wrong Edit', error.message);
+      setToastMsg(local.error);
       console.log(error);
     }
   };
@@ -65,6 +72,7 @@ const EditRecipes = ({route, navigation}) => {
       pickIngAction={pickIngHandler}
       completeRecipeAction={editRecipeHandler}
       deletePickIngAction={delPickIngHandler}
+      backAction={backHandler}
     />
   );
 };

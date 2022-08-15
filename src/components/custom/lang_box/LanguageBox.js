@@ -6,13 +6,16 @@ import CheckBox from '@react-native-community/checkbox';
 import styles from './style';
 // data
 import language from '../../../data/language';
+// hook
+import {useLocal} from '../../../hooks';
 
 const LanguageBox = (props) => {
   const {handleChange, langList} = props;
+  const local = useLocal();
   return (
     <View style={styles.container}>
       <View style={styles.langBox}>
-        <Text style={styles.title}>Choose Language</Text>
+        <Text style={styles.title}>{local.langBoxTitle}</Text>
         {langList.map((item, index) => {
           return (
             <TouchableOpacity

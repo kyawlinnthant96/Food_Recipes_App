@@ -10,9 +10,19 @@ import Language from '@assets/icons/Language';
 import About from '@assets/icons/About';
 import Logout from '@assets/icons/Logout';
 
+// hooks
+import {useLocal} from '../../../hooks';
+
 const UserStatusSetting = (props) => {
-  const {logoutAction, languageAction, yourRecipeList, goToBookmarkAction} =
-    props;
+  const local = useLocal();
+
+  const {
+    logoutAction,
+    languageAction,
+    aboutAction,
+    yourRecipeList,
+    goToBookmarkAction,
+  } = props;
   return (
     <View style={styles.statusContainer}>
       <TouchableOpacity onPress={goToBookmarkAction}>
@@ -49,19 +59,19 @@ const UserStatusSetting = (props) => {
         <TouchableOpacity onPress={languageAction}>
           <View style={styles.listContaier}>
             <Language width={35} height={35} color="#444" />
-            <Text style={styles.listText}>Language</Text>
+            <Text style={styles.listText}>{local.langTitle}</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={aboutAction}>
           <View style={styles.listContaier}>
             <About width={30} height={30} color={COLORS.black} />
-            <Text style={styles.listText}>About LetCook</Text>
+            <Text style={styles.listText}>{local.aboutTitle} </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={logoutAction}>
           <View style={styles.logoutContainer}>
             <Logout width={30} height={30} />
-            <Text style={styles.listText}>Logout</Text>
+            <Text style={styles.listText}>{local.logoutTitle}</Text>
           </View>
         </TouchableOpacity>
       </View>

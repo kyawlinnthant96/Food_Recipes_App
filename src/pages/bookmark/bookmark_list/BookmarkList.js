@@ -4,13 +4,18 @@ import {getBookmarkList} from '../../../data/MockData';
 
 // Styles
 import styles from './style';
+import BookmarkIcon from '@assets/icons/Bookmark';
 // redux
 import {useSelector, useDispatch} from 'react-redux';
 import * as actionBook from '../../../store/action/bookmark';
 // components
-import {Bookmark, CustomPressable} from '../../../components';
+import {Bookmark, CustomPressable, setToastMsg} from '../../../components';
+
+// hooks
+import {useLocal} from '../../../hooks';
 
 const BookmarkList = ({navigation}) => {
+  const local = useLocal();
   const recipes = useSelector((state) => state.recList.recipesList);
   const bmList = useSelector((state) => state.bookList.bookmarkList);
   const dispatch = useDispatch();
@@ -25,7 +30,12 @@ const BookmarkList = ({navigation}) => {
   };
 
   const deleteHandler = (itemId) => {
-    dispatch(actionBook.removeBookmark(itemId));
+    try {
+      dispatch(actionBook.removeBookmark(itemId));
+      setToastMsg(local.rmvSuccess);
+    } catch (error) {
+      setToastMsg(local.error);
+    }
   };
 
   const goToCreate = () => {
@@ -34,11 +44,20 @@ const BookmarkList = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Bookmark
-        data={bmList}
-        goToDetalAction={recDetailHandler}
-        deleteAction={deleteHandler}
-      />
+      {bmList.length > 0 ? (
+        <Bookmark
+          data={bmList}
+          goToDetalAction={recDetailHandler}
+          deleteAction={deleteHandler}
+        />
+      ) : (
+        <View style={styles.emptyContainer}>
+          <View style={styles.cardContainer}>
+            <BookmarkIcon width={100} height={100} color="gray" />
+            <Text style={styles.cardText}>{local.emptyCard}</Text>
+          </View>
+        </View>
+      )}
       <CustomPressable
         title="Create Recipes"
         titleStyle={styles.titleStyle}

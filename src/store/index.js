@@ -12,7 +12,6 @@ const rootReducer = combineReducers({
   ingList: ingReducer,
   bookList: bookReducer,
 });
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
+export const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;

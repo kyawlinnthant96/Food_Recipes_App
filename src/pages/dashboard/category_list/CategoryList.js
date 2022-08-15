@@ -1,12 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  ImageBackground,
-  SafeAreaView,
-} from 'react-native';
+import {View, FlatList, SafeAreaView} from 'react-native';
 
 // redux
 import {useDispatch, useSelector} from 'react-redux';
@@ -29,29 +22,25 @@ import {
   RecipeCard,
   Trending,
   CategoryHeader,
-  setToastMsg,
 } from '@components';
 
 // context
 import {DataContext} from '../../../context/DataContext/DataContext';
 
 const CategoryList = ({navigation}) => {
-  const {info} = useContext(DataContext);
-  const dispatch = useDispatch();
-  const catData = useSelector((state) => state.catList.categoryLists);
-  const recipesData = useSelector((state) => state.recList.recipesList);
+  useEffect(() => {
+    addLoadData();
+  }, []);
 
   const addLoadData = () => (
     dispatch(actionCat.addToCat(categories)),
     dispatch(actionRec.loadRecList(recipes)),
-    dispatch(actionIng.loadIngList(ingredients)),
-    console.log('run')
+    dispatch(actionIng.loadIngList(ingredients))
   );
-
-  useEffect(() => {
-    addLoadData();
-    return addLoadData;
-  }, []);
+  const {info} = useContext(DataContext);
+  const dispatch = useDispatch();
+  const catData = useSelector((state) => state.catList.categoryLists);
+  const recipesData = useSelector((state) => state.recList.recipesList);
 
   const detailList = (data) => {
     const title = data.name;

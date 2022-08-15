@@ -24,8 +24,6 @@ const MainProfile = ({navigation}) => {
   const [langData, setlangData] = useState(language);
   const token = localStorage.getItem('@UserId:token');
 
-  console.log(token);
-
   const logoutHandler = async () => {
     await auth()
       .signOut()
@@ -71,6 +69,10 @@ const MainProfile = ({navigation}) => {
     });
   };
 
+  const aboutHandler = () => {
+    setToastMsg('Comming soon');
+  };
+
   return (
     <View style={styles.container}>
       <ProfileHeader
@@ -83,6 +85,7 @@ const MainProfile = ({navigation}) => {
         languageAction={langHandler}
         yourRecipeList={goToYourRecipe}
         goToBookmarkAction={goToBookmarkHandler}
+        aboutAction={aboutHandler}
       />
       {langOption && (
         <LanguageBox handleChange={languageHander} langList={langData} />

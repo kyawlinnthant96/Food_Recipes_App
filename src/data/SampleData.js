@@ -729,7 +729,7 @@ export const ingredients = [
     name: 'Mushrooms',
     unit: 'pics',
     photo_url:
-      'https://foolproofliving.com/wp-content/uploads/2022/03/How-to-clean-shiitake-mushrooms-600x600.jpghttps://www.thespruce.com/thmb/414VvQVWq41pbMlqOE5sAC0d6C4=/1414x1414/smart/filters:no_upscale()/Cornstarch-GettyImages-1037155590-0892a9d13aca4706a7b9d782ff40186c.jpg',
+      'https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2020/03/brown-mushroom-53494-scaled.jpg',
   },
   {
     ingredientId: 66,

@@ -12,11 +12,7 @@ import * as actionRec from '../../store/action/recipes';
 import {RecipeLists, SearchBar, setToastMsg} from '@components';
 
 // mockdata
-import {
-  getRecByCatName,
-  getRecByRecName,
-  getCategoryName,
-} from '../../data/MockData';
+import {getRecByCatName, getRecByRecName} from '../../data/MockData';
 
 const RecipeSearch = ({navigation}) => {
   const recipesData = useSelector((state) => state.recList.recipesList);

@@ -13,10 +13,14 @@ import * as actionRec from '../../../store/action/recipes';
 // components
 import {setToastMsg} from '@components';
 // storage
-import {localStorage} from '../../../utils/localStorage';
+import {localStorage, key} from '../../../utils/localStorage';
 import {ingredients} from '../../../data/SampleData';
 
+// hooks
+import {useLocal} from '../../../hooks';
+
 const CreateRecipes = ({navigation}) => {
+  const local = useLocal();
   const dispatch = useDispatch();
   const curPickIngList = useSelector((state) => state.ingList.pickIngredient);
 
@@ -28,6 +32,7 @@ const CreateRecipes = ({navigation}) => {
     let title = 'Add your Ingredients';
     navigation.navigate('IngList', {title});
   };
+  const usertoken = localStorage.getItem('@UserId:token');
 
   const createRecipeHandler = (data) => {
     const createData = {
@@ -43,10 +48,10 @@ const CreateRecipes = ({navigation}) => {
     try {
       dispatch(actionRec.createRecipe(createData));
       localStorage.setItem('@User:recipe', JSON.stringify(createData));
-      setToastMsg('Create recipes successful');
+      setToastMsg(local.createRecSuccess);
       navigation.goBack();
     } catch (error) {
-      setToastMsg('Somethin wrong');
+      setToastMsg(local.error);
       console.log(error.message);
     }
   };
@@ -54,10 +59,14 @@ const CreateRecipes = ({navigation}) => {
   const delPickIngHandler = (data) => {
     try {
       dispatch(actionIng.remIngList(data));
-      setToastMsg('Remove ingredients');
+      setToastMsg(local.rmvSuccess);
     } catch (error) {
-      setToastMsg('Something wrong');
+      setToastMsg(local.error);
     }
+  };
+
+  const backHandler = () => {
+    navigation.goBack();
   };
 
   return (
@@ -65,6 +74,7 @@ const CreateRecipes = ({navigation}) => {
       pickIngAction={pickIngHandler}
       completeRecipeAction={createRecipeHandler}
       deletePickIngAction={delPickIngHandler}
+      backAction={backHandler}
     />
   );
 };

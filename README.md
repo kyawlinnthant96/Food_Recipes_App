@@ -13,4 +13,4 @@
 - Search
 - CRUD with redux
 - Navigation Bar
-- Beautiful UI Design Kit
+- UI Design from dribble and feature from side chef

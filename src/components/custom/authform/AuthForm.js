@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   KeyboardAvoidingView,
@@ -24,10 +24,11 @@ import {COLORS} from '@constants';
 
 // Components
 import CustomPressable from '../button/CustomPressable';
+
 //hooks
 import {useLocal} from '../../../hooks';
 
-const AuthForm = props => {
+const AuthForm = (props) => {
   const {onPress, authRoute, toNavigate} = props;
   const [data, setData] = useState({
     username: '',
@@ -39,13 +40,14 @@ const AuthForm = props => {
   });
   const local = useLocal();
 
-  const nameInputChange = val => {
+  // input
+  const nameInputChange = (val) => {
     setData({
       ...data,
       username: val,
     });
   };
-  const textInputChange = val => {
+  const textInputChange = (val) => {
     if (val.length !== 0) {
       setData({
         ...data,
@@ -61,7 +63,7 @@ const AuthForm = props => {
     }
   };
 
-  const handlePasswordChange = val => {
+  const handlePasswordChange = (val) => {
     if (val.length !== 0) {
       setData({
         ...data,
@@ -110,7 +112,7 @@ const AuthForm = props => {
                   <TextInput
                     style={styles.textInput}
                     placeholder={local.placeholderUsername}
-                    onChangeText={val => nameInputChange(val)}
+                    onChangeText={(val) => nameInputChange(val)}
                   />
                 </View>
               </>
@@ -125,7 +127,7 @@ const AuthForm = props => {
               <TextInput
                 style={styles.textInput}
                 placeholder={local.placeholderEmail}
-                onChangeText={val => textInputChange(val)}
+                onChangeText={(val) => textInputChange(val)}
               />
               {data.check_textInputChange ? (
                 <CheckCircle width={hp(4)} height={hp(4)} />
@@ -143,7 +145,7 @@ const AuthForm = props => {
                 secureTextEntry={data.secureTextEntry ? true : false}
                 style={styles.textInput}
                 autoCapitalize="none"
-                onChangeText={val => handlePasswordChange(val)}
+                onChangeText={(val) => handlePasswordChange(val)}
               />
               {data.confirm_secureTextEntry ? (
                 <TouchableOpacity onPress={updateSecureTextEntry}>

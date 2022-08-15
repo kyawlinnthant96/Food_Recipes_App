@@ -1,6 +1,6 @@
 export const getNumberOfRecipes = (categoryID, recipes) => {
   let count = 0;
-  recipes.map(data => {
+  recipes.map((data) => {
     if (data.categoryId === categoryID) {
       count++;
     }
@@ -10,7 +10,7 @@ export const getNumberOfRecipes = (categoryID, recipes) => {
 
 export const getRecipes = (categoryId, recipes) => {
   const recipesArray = [];
-  recipes.map(data => {
+  recipes.map((data) => {
     if (data.categoryId == categoryId) {
       recipesArray.push(data);
     }
@@ -20,7 +20,7 @@ export const getRecipes = (categoryId, recipes) => {
 
 export const getCategoryName = (categoryId, categories) => {
   let name;
-  categories.map(data => {
+  categories.map((data) => {
     if (data.id == categoryId) {
       name = data.name;
     }
@@ -30,7 +30,7 @@ export const getCategoryName = (categoryId, categories) => {
 
 export const getIngredientUrl = (ingredientID, ingredients) => {
   let url;
-  ingredients.map(data => {
+  ingredients.map((data) => {
     if (data.ingredientId == ingredientID) {
       url = data.photo_url;
     }
@@ -40,8 +40,8 @@ export const getIngredientUrl = (ingredientID, ingredients) => {
 
 export const getAllIngredients = (idArray, ingredients) => {
   const ingredientsArray = [];
-  idArray.map(index => {
-    ingredients.map(data => {
+  idArray.map((index) => {
+    ingredients.map((data) => {
       if (data.ingredientId == index[0]) {
         ingredientsArray.push([data, index[1]]);
       }
@@ -52,7 +52,7 @@ export const getAllIngredients = (idArray, ingredients) => {
 
 export const getIngredientName = (ingredientID, ingredients) => {
   let name;
-  ingredients.map(data => {
+  ingredients.map((data) => {
     if (data.ingredientId == ingredientID) {
       name = data.name;
     }
@@ -62,8 +62,8 @@ export const getIngredientName = (ingredientID, ingredients) => {
 
 export const getRecipesByIngredient = (ingredientId, recipes) => {
   const recipesArray = [];
-  recipes.map(data => {
-    data.ingredients.map(index => {
+  recipes.map((data) => {
+    data.ingredients.map((index) => {
       if (index[0] == ingredientId) {
         recipesArray.push(data);
       }
@@ -72,12 +72,46 @@ export const getRecipesByIngredient = (ingredientId, recipes) => {
   return recipesArray;
 };
 
-export const getBookmarkList = recArray => {
+export const getBookmarkList = (recArray) => {
   const bookmarkList = [];
-  recArray.map(data => {
+  recArray.map((data) => {
     if (data.isBookMark) {
       bookmarkList.push(data);
     }
   });
   return bookmarkList;
+};
+
+export const getNameArray = (catArr) => {
+  const nameArray = [];
+  catArr.map((item) => {
+    nameArray.push(item.name);
+  });
+  return nameArray;
+};
+
+// search
+export const getRecByCatName = (categoryName, categories, recipes) => {
+  const nameUpper = categoryName.toUpperCase();
+  const recipesArray = [];
+  categories.map((data) => {
+    if (data.name.toUpperCase().includes(nameUpper)) {
+      const recipe = getRecipes(data.id, recipes);
+      recipe.map((item) => {
+        recipesArray.push(item);
+      });
+    }
+  });
+  return recipesArray;
+};
+
+export const getRecByRecName = (recipeName, recipes) => {
+  const nameUpper = recipeName.toUpperCase();
+  const recipesArray = [];
+  recipes.map((data) => {
+    if (data.title.toUpperCase().includes(nameUpper)) {
+      recipesArray.push(data);
+    }
+  });
+  return recipesArray;
 };

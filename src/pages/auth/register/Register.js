@@ -19,7 +19,7 @@ const Register = ({route, navigation}) => {
   const {getUserInfo, getAuth} = useContext(DataContext);
   const local = useLocal();
 
-  const registerHandler = value => {
+  const registerHandler = (value) => {
     const {username, email, password} = value;
     if (email.length <= 0 || password.length <= 0) {
       setToastMsg(local.validLogError);
@@ -27,7 +27,7 @@ const Register = ({route, navigation}) => {
     }
     auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(response => {
+      .then((response) => {
         const data = {
           username: username,
           email: email,
@@ -36,11 +36,12 @@ const Register = ({route, navigation}) => {
         const user_uid = response.user._user.uid;
         firestore().collection('users').doc(user_uid).set(data);
         localStorage.setItem('@UserId:token', user_uid);
+        localStorage.setItem('@UserData:info', JSON.stringify(data));
         getUserInfo(data);
         getAuth(true);
         setToastMsg(local.regSuccess);
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.code === 'auth/email-already-in-use') {
           setToastMsg(local.duplicateEmailError);
         } else {
@@ -51,7 +52,7 @@ const Register = ({route, navigation}) => {
   };
 
   const screenHandler = () => {
-    navigation.navigate('Login', {routeName: 'Login'});
+    navigation.navigate('Login', {routeName: local.login});
   };
 
   return (

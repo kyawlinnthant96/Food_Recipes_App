@@ -3,30 +3,22 @@ import React from 'react';
 
 // style
 import styles from './style';
-import Option from '@assets/icons/Option';
-// components
-import OptionBox from '../custom/option/Option';
+import Delete from '../../../assets/icons/Delete';
 
-const Bookmark = props => {
-  const {data, goToDetalAction, options, visible, deleteAction} = props;
+const Bookmark = (props) => {
+  const {data, goToDetalAction, deleteAction} = props;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>My Save Recipes</Text>
+      {/* <Text style={styles.title}>My Save Recipes</Text> */}
 
       <ScrollView>
         <View style={styles.bookList}>
-          {data.map(item => (
+          {data.map((item) => (
             <TouchableOpacity
               key={`${item.recipeId}`}
               onPress={() => goToDetalAction(item)}
               activeOpacity={0.5}>
-              {visible && (
-                <OptionBox
-                  title="Delete"
-                  onPress={() => deleteAction(item.recipeId)}
-                />
-              )}
               <View style={styles.listContainer}>
                 {/* image */}
                 <View style={styles.imageContainer}>
@@ -38,8 +30,8 @@ const Bookmark = props => {
                   <TouchableOpacity
                     style={styles.option}
                     activeOpacity={0.5}
-                    onPress={options}>
-                    <Option width={24} height={24} color="#000" />
+                    onPress={() => deleteAction(item.recipeId)}>
+                    <Delete width={24} height={24} color="#000" />
                   </TouchableOpacity>
                 </View>
 

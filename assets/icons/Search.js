@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Svg, {Circle, Path} from 'react-native-svg';
 
-const Search = props => (
+const Search = (props) => (
   <Svg
-    viewBox="0 2 28 33"
+    viewBox="0 0 24 24"
     fill="none"
     width={props.width}
     height={props.height}

@@ -1,12 +1,14 @@
 export default item = [
   {
     id: 1,
-    value: 'en',
+    value: 'EN',
     name: 'English',
+    isChecked: false,
   },
   {
     id: 2,
-    value: 'mm',
+    value: 'MM',
     name: 'Myanmar',
+    isChecked: false,
   },
 ];

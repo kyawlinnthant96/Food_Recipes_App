@@ -6,6 +6,7 @@ import styles from './style';
 import {COLORS} from '@constants';
 import Clock from '@assets/icons/Clock';
 import BackArrow from '@assets/icons/BackArrow';
+import Edit from '@assets/icons/Edit';
 // components
 import CustomPressable from '../../custom/button/CustomPressable';
 
@@ -13,9 +14,9 @@ import CustomPressable from '../../custom/button/CustomPressable';
 import {getCategoryName} from '@data/MockData';
 import {useSelector} from 'react-redux';
 
-const RecipeDetail = props => {
-  const {data, goIngAction, backAction} = props;
-  const categories = useSelector(state => state.catList.categoryLists);
+const RecipeDetail = (props) => {
+  const {data, goIngAction, backAction, editRecipeAction} = props;
+  const categories = useSelector((state) => state.catList.categoryLists);
   return (
     <>
       <ScrollView>
@@ -55,6 +56,12 @@ const RecipeDetail = props => {
         style={styles.backButton}
         onPress={backAction}>
         <BackArrow width={20} height={20} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.5}
+        style={styles.editButton}
+        onPress={editRecipeAction}>
+        <Edit width={30} height={30} color={COLORS.white} />
       </TouchableOpacity>
     </>
   );

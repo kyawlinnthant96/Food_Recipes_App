@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
     ...FONTS.body4,
     marginTop: -hp(0.3),
   },
-  btnContainer: {},
   gradientContainer: {
     marginTop: SIZES.gap,
     paddingVertical: SIZES.vertical,

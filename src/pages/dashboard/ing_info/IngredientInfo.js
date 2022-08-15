@@ -16,24 +16,19 @@ import * as actionRec from '../../../store/action/recipes';
 
 const IngredientInfo = ({route, navigation}) => {
   const ingredientId = route?.params?.ingredient;
-  const categories = useSelector(state => state.catList.categoryLists);
-  const ingredient = useSelector(state => state.ingList.ingredientsList);
-  const recipes = useSelector(state => state.recList.recipesList);
+  const ingredient = useSelector((state) => state.ingList.ingredientsList);
+  const recipes = useSelector((state) => state.recList.recipesList);
   const dispatch = useDispatch();
 
   const ingredientUrl = getIngredientUrl(ingredientId, ingredient);
   const recipeByIng = getRecipesByIngredient(ingredientId, recipes);
   const title = route?.params?.title;
 
-  const bookMarkHandler = itemId => {
+  const bookMarkHandler = (itemId) => {
     dispatch(actionRec.bookUpdateRecList(itemId));
   };
-  const recDetailHandler = data => {
+  const recDetailHandler = (data) => {
     navigation.navigate('ItemDetail', {data});
-  };
-  const goToCatData = data => {
-    const title = getCategoryName(data, categories);
-    navigation.navigate('CatDetail', {data, title});
   };
 
   return (
@@ -51,7 +46,6 @@ const IngredientInfo = ({route, navigation}) => {
       <View style={styles.infoContainer}>
         <RecipeLists
           data={recipeByIng}
-          catData={goToCatData}
           bookMarkAction={bookMarkHandler}
           recDetailAction={recDetailHandler}
         />

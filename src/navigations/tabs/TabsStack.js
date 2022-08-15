@@ -51,10 +51,10 @@ const TabsStack = () => {
           component={RecipesStack}
           options={{
             tabBarIcon: ({focused}) => (
-              <View style={styles.tabContainer}>
+              <View style={styles.tabContainerSearch}>
                 <Search
-                  width={hp(5)}
-                  height={hp(5)}
+                  width={hp(4)}
+                  height={hp(4)}
                   color={focused ? COLORS.darkLime : COLORS.gray}
                 />
                 {focused && <View style={styles.bottomLine} />}

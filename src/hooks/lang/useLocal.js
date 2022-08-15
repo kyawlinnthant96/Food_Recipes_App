@@ -9,7 +9,7 @@ import mm from '../../components/helper/mm';
 export const useLocal = () => {
   const {lang} = useContext(DataContext);
 
-  if (lang === 'en') {
+  if (lang === 'EN') {
     return en;
   } else {
     return mm;

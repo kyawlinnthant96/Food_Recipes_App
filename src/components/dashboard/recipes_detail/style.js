@@ -70,6 +70,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: hp(1),
     borderRadius: hp(5),
   },
+  editButton: {
+    position: 'absolute',
+    backgroundColor: COLORS.transparent,
+    margin: hp(2),
+    right: 0,
+    paddingVertical: hp(1),
+    paddingHorizontal: hp(1),
+  },
 });
 
 export default styles;

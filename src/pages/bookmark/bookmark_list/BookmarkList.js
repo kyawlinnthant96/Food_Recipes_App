@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {getBookmarkList} from '../../../data/MockData';
 
@@ -8,14 +8,11 @@ import styles from './style';
 import {useSelector, useDispatch} from 'react-redux';
 import * as actionBook from '../../../store/action/bookmark';
 // components
-import {HeaderBar, Bookmark} from '../../../components';
-// context
-import {DataContext} from '../../../context/DataContext/DataContext';
+import {Bookmark, CustomPressable} from '../../../components';
 
 const BookmarkList = ({navigation}) => {
-  const {optionBox, getOptionBox} = useContext(DataContext);
-  const recipes = useSelector(state => state.recList.recipesList);
-  const bmList = useSelector(state => state.bookList.bookmarkList);
+  const recipes = useSelector((state) => state.recList.recipesList);
+  const bmList = useSelector((state) => state.bookList.bookmarkList);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,28 +20,30 @@ const BookmarkList = ({navigation}) => {
     dispatch(actionBook.addToBookmark(setBmList));
   }, [recipes]);
 
-  const recDetailHandler = data => {
+  const recDetailHandler = (data) => {
     navigation.navigate('ItemDetail', {data});
   };
 
-  const optionHandler = () => {
-    getOptionBox(true);
+  const deleteHandler = (itemId) => {
+    dispatch(actionBook.removeBookmark(itemId));
   };
 
-  const deleteHandler = itemId => {
-    dispatch(actionBook.removeBookmark(itemId));
-    getOptionBox(false);
+  const goToCreate = () => {
+    navigation.navigate('Create');
   };
 
   return (
     <View style={styles.container}>
-      <HeaderBar />
       <Bookmark
         data={bmList}
         goToDetalAction={recDetailHandler}
-        options={optionHandler}
-        visible={optionBox}
         deleteAction={deleteHandler}
+      />
+      <CustomPressable
+        title="Create Recipes"
+        titleStyle={styles.titleStyle}
+        btnStyle={styles.btnStyle}
+        onPress={goToCreate}
       />
     </View>
   );

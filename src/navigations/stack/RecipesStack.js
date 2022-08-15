@@ -2,14 +2,14 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // pages
-import SearchRecipeScreen from '../../pages/search/search_screen/SearchScreen';
+import RecipeSearchScreen from '../../pages/search/RecipeSearch';
 
 const RecipesStack = () => {
   const Stack = createNativeStackNavigator();
 
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Search" component={SearchRecipeScreen} />
+      <Stack.Screen name="Recipe" component={RecipeSearchScreen} />
     </Stack.Navigator>
   );
 };

@@ -7,6 +7,7 @@ import AuthStack from './stack/AuthStack';
 import TabsStack from './tabs/TabsStack';
 // context
 import {DataContext} from '../context/DataContext/DataContext';
+import {localStorage} from '../utils/localStorage';
 // pages
 import Splash from '../pages/splash/Splash';
 // firebase
@@ -15,13 +16,14 @@ import firestore from '@react-native-firebase/firestore';
 // redux store
 import store from '../store';
 
+import language from '../data/language';
+
 const AppNavigator = () => {
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = useState('EN');
   const [initialAuth, setInitialAuth] = useState(false);
   const [user, setUser] = useState();
   const [info, setInfo] = useState('');
   const [splash, setSplash] = useState(true);
-  const [optionBox, setOptionBox] = useState(false);
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(userSession);
@@ -29,7 +31,7 @@ const AppNavigator = () => {
   }, []);
 
   // firebase persist user session
-  const userSession = user => {
+  const userSession = (user) => {
     if (!user) {
       setInitialAuth(false);
       setTimeout(() => {
@@ -38,33 +40,37 @@ const AppNavigator = () => {
     } else {
       setUser(user);
       setInitialAuth(true);
+      const userInfo = localStorage.getItem('@UserData:info');
+      if (userInfo) {
+        let formatInfo = JSON.parse(userInfo);
+        setInfo(formatInfo);
+      } else {
+        firestore()
+          .collection('users')
+          .doc(user.uid)
+          .get()
+          .then((user) => {
+            setInfo(user.data());
+          });
+      }
       setTimeout(() => {
         setSplash(false);
       }, 3000);
-      firestore()
-        .collection('users')
-        .doc(user.uid)
-        .get()
-        .then(user => {
-          setInfo(user.data());
-        });
     }
   };
-
   // context
   const context = {
-    optionBox,
     info,
     user,
     lang,
-    getAuth: value => {
+    getAuth: (value) => {
       setInitialAuth(value);
     },
-    getUserInfo: value => {
+    getUserInfo: (value) => {
       setInfo(value);
     },
-    getOptionBox: value => {
-      setOptionBox(value);
+    getLang: (value) => {
+      setLang(value);
     },
   };
 

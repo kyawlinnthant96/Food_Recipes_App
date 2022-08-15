@@ -4,12 +4,10 @@ import React from 'react';
 // style
 import styles from './style';
 
-const HeaderBar = () => {
+export default function CategoryHeader() {
   return (
     <View style={styles.container}>
-      <Text>HeaderBar</Text>
+      <Text style={styles.header}>Category</Text>
     </View>
   );
-};
-
-export default HeaderBar;
+}

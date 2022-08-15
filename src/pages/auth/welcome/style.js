@@ -1,5 +1,9 @@
 import {StyleSheet} from 'react-native';
 import {COLORS, FONTS, SIZES} from '@constants';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const styles = StyleSheet.create({
   container: {
@@ -55,6 +59,20 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.radius,
     borderColor: COLORS.darkLime,
     borderWidth: 1,
+  },
+  langButton: {
+    position: 'absolute',
+    // backgroundColor: '#fff',
+    borderWidth: hp(0.2),
+    borderRadius: hp(5),
+    borderColor: COLORS.white,
+    top: 0,
+    right: 0,
+    width: wp(15),
+    height: hp(7),
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: hp(2),
   },
 });
 

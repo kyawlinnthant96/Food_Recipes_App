@@ -3,53 +3,53 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import {COLORS, FONTS, SIZES} from '@constants';
 
 const styles = StyleSheet.create({
   container: {
     width: wp(100),
-    height: hp(15),
-    backgroundColor: 'orange',
-    position: 'relative',
+    height: hp(10),
+    backgroundColor: COLORS.white,
     flexDirection: 'row',
-    borderBottomEndRadius: hp(5),
-    borderBottomStartRadius: hp(5),
+    shadowOffset: {width: 0, height: 5},
+    shadowColor: COLORS.darkLime,
+    shadowOpacity: hp(0.8),
+    elevation: 1,
     marginBottom: hp(2),
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: hp(2),
+    borderBottomEndRadius: hp(2),
+    borderBottomStartRadius: hp(2),
   },
   imageContainer: {
-    width: wp(30),
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: wp(15),
+    height: hp(7.5),
+    marginHorizontal: hp(2),
   },
   image: {
-    width: '90%',
-    height: '90%',
+    width: '100%',
+    height: '100%',
     resizeMode: 'contain',
     borderRadius: hp(10),
     borderWidth: hp(0.3),
-    borderColor: '#fff',
+    borderColor: COLORS.black,
   },
-  profileName: {
-    width: wp(50),
+  infoContainer: {
+    width: wp(60),
     height: '100%',
-    justifyContent: 'flex-end',
-    paddingVertical: hp(1.5),
-    paddingHorizontal: hp(1),
+    justifyContent: 'space-between',
+    paddingHorizontal: hp(2),
+    paddingVertical: hp(2),
   },
   name: {
-    fontSize: hp(2.6),
-    color: '#666',
-    fontFamily: 'Poppins-Bold',
+    color: COLORS.black,
+    ...FONTS.body4,
   },
-  btnContent: {
-    position: 'absolute',
-    right: hp(3),
-    top: hp(3),
-  },
-  btn: {
-    fontFamily: 'Poppins-Medium',
-    fontSize: hp(2),
-    color: 'crimson',
+  editBtnContent: {},
+  editText: {
+    textDecorationLine: 'underline',
+    color: COLORS.blue,
   },
 });
 

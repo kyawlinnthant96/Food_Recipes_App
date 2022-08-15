@@ -1,0 +1,30 @@
+import {View, Text, TouchableOpacity, Image} from 'react-native';
+import React from 'react';
+
+// style
+import styles from './style';
+
+const HeaderBar = (props) => {
+  const {userName, userPhoto} = props;
+  return (
+    <View style={styles.container}>
+      <View style={styles.welcomText}>
+        <Text style={styles.wel1}>Hello {userName}</Text>
+        <Text style={styles.wel2}>What you want to cook today?</Text>
+      </View>
+      <TouchableOpacity>
+        <Image
+          style={styles.image}
+          resizeMode="cover"
+          source={{
+            uri: userPhoto
+              ? userPhoto
+              : 'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg',
+          }}
+        />
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+export default HeaderBar;

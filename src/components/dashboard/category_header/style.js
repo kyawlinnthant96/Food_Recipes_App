@@ -7,9 +7,12 @@ import {COLORS, FONTS, SIZES} from '@constants';
 
 const styles = StyleSheet.create({
   container: {
-    width: wp(100),
-    height: hp(10),
-    backgroundColor: COLORS.darkLime,
+    marginTop: hp(2),
+    marginHorizontal: SIZES.padding,
+  },
+  header: {
+    flex: 1,
+    ...FONTS.h2,
   },
 });
 

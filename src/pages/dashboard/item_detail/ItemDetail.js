@@ -9,6 +9,14 @@ import styles from './style';
 const ItemDetail = ({route, navigation}) => {
   const item = route.params.data;
 
+  const editRecipeHandler = () => {
+    navigation.navigate('Collect', {
+      screen: 'Edit',
+      initial: false,
+      params: {data: item},
+    });
+  };
+
   const backHandler = () => {
     navigation.goBack();
   };
@@ -23,6 +31,7 @@ const ItemDetail = ({route, navigation}) => {
       data={item}
       backAction={backHandler}
       goIngAction={ingHandler}
+      editRecipeAction={editRecipeHandler}
     />
   );
 };

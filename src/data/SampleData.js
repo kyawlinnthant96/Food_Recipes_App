@@ -597,7 +597,7 @@ export const ingredients = [
     name: 'Pork',
     unit: 'g',
     photo_url:
-      'https://www.kaveyeats.com/wp-content/uploads/2022/09/Phuket-Town-Black-Pepper-Pork.jpg',
+      'https://image.shutterstock.com/image-photo/meat-pork-slices-loin-on-260nw-561686899.jpg',
   },
   {
     ingredientId: 48,
@@ -739,3 +739,5 @@ export const ingredients = [
       'https://www.thespruceeats.com/thmb/nw4IC1mZ48YkGIhnpvGliRbfkto=/1887x1415/smart/filters:no_upscale()/478789639-56a30dfa5f9b58b7d0d03216.jpg',
   },
 ];
+
+export const trending = recipes;

@@ -24,7 +24,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   icon: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
     justifyContent: 'center',
+    alignItems: 'center',
     marginVertical: hp(1),
   },
   bottom: {
@@ -46,8 +50,10 @@ const styles = StyleSheet.create({
   },
   catContaier: {
     backgroundColor: COLORS.gray,
-    width: '40%',
-    height: hp(3),
+    paddingHorizontal: SIZES.radius,
+    paddingVertical: hp(0.5),
+    // width: '40%',
+    // height: hp(3),
     marginHorizontal: hp(1),
     marginVertical: hp(1),
     borderRadius: SIZES.radius,

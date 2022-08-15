@@ -13,12 +13,19 @@ const styles = StyleSheet.create({
     right: 0,
     elevation: 0,
     backgroundColor: COLORS.white,
-    borderTopColor: 'transparent',
+    borderTopColor: COLORS.transparentBlack3,
     height: wp(18),
   },
   tabContainer: {
-    justifyContent: 'center',
     alignItems: 'center',
+  },
+  tabContainerSearch: {
+    height: '65%',
+    width: '45%',
+    paddingHorizontal: hp(2),
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: hp(0.5),
   },
   bottomLine: {
     backgroundColor: COLORS.darkLime,

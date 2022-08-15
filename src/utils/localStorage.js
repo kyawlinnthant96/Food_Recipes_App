@@ -2,6 +2,8 @@ import {MMKV} from 'react-native-mmkv';
 
 export const storage = new MMKV();
 
+export const keys = storage.getAllKeys();
+
 export const localStorage = {
   setItem: (key, value) => {
     try {
@@ -11,7 +13,7 @@ export const localStorage = {
     }
   },
 
-  getItem: key => {
+  getItem: (key) => {
     try {
       return storage.getString(key);
     } catch (error) {
@@ -19,7 +21,7 @@ export const localStorage = {
     }
   },
 
-  removeItem: key => {
+  removeItem: (key) => {
     try {
       storage.delete(key);
     } catch (error) {

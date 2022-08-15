@@ -2,7 +2,7 @@ import * as React from 'react';
 import Svg, {G, Path} from 'react-native-svg';
 
 const BackArrow = props => (
-  <Svg width={props.width} height={props.height} viewBox="0 0 20 22">
+  <Svg width={props.width} height={props.height} viewBox="0 0 22 22">
     <G fill="none" fillRule="evenodd">
       <Path opacity={0.87} d="M-6-2h24v24H-6z" />
       <Path

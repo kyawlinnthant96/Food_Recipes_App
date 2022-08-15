@@ -15,9 +15,9 @@ import {COLORS} from '@constants';
 import {getCategoryName} from '@data/MockData';
 import {useSelector} from 'react-redux';
 
-const RecipeLists = props => {
-  const {data, catData, bookMarkAction, recDetailAction} = props;
-  const categories = useSelector(state => state.catList.categoryLists);
+const RecipeLists = (props) => {
+  const {data, bookMarkAction, recDetailAction} = props;
+  const categories = useSelector((state) => state.catList.categoryLists);
 
   const renderComponents = ({item}) => {
     return (
@@ -32,19 +32,17 @@ const RecipeLists = props => {
               source={{uri: item.photo_url}}>
               {/* Top */}
               <View style={styles.top}>
-                <TouchableOpacity
-                  style={styles.catContaier}
-                  onPress={() => catData(item.categoryId)}>
+                <View style={styles.catContaier}>
                   <Text style={styles.catText}>
                     {getCategoryName(item.categoryId, categories)}
                   </Text>
-                </TouchableOpacity>
+                </View>
                 <View style={styles.icon}>
                   <TouchableOpacity
                     onPress={() => bookMarkAction(item.recipeId)}>
                     <Bookmark
-                      width={40}
-                      height={40}
+                      width={45}
+                      height={45}
                       color={item.isBookMark ? COLORS.darkLime : COLORS.white}
                     />
                   </TouchableOpacity>

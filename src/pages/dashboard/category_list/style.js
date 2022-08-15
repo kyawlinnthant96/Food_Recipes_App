@@ -8,9 +8,12 @@ import {COLORS, FONTS, SIZES} from '@constants';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    backgroundColor: COLORS.lightGray,
+    backgroundColor: COLORS.white,
   },
+  catCardContainer: {
+    marginHorizontal: SIZES.padding,
+  },
+
   header: {
     backgroundColor: COLORS.darkLime,
     width: '100%',

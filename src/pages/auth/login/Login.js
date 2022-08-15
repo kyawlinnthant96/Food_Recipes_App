@@ -18,7 +18,7 @@ const Login = ({route, navigation}) => {
   const {getUserInfo} = useContext(DataContext);
   const local = useLocal();
 
-  const loginHandler = value => {
+  const loginHandler = (value) => {
     const {email, password} = value;
     if (email.length <= 0 || password.length <= 0) {
       setToastMsg(local.validLogError);
@@ -26,34 +26,37 @@ const Login = ({route, navigation}) => {
     }
     auth()
       .signInWithEmailAndPassword(email, password)
-      .then(response => {
+      .then((response) => {
         const user_uid = response.user.uid;
-        console.log(user_uid);
         firestore()
           .collection('users')
           .doc(user_uid)
           .get()
-          .then(user => {
+          .then((user) => {
             if (user.exists) {
               localStorage.setItem('@UserId:token', user_uid);
+              localStorage.setItem(
+                '@UserData:info',
+                JSON.stringify(user.data()),
+              );
               getUserInfo(user.data());
               setToastMsg(local.logSuccess);
             } else {
               setToastMsg(local.logError);
             }
           })
-          .catch(error => {
+          .catch((error) => {
             setToastMsg(local.error);
             console.log(error);
           });
       })
-      .catch(error => {
+      .catch((error) => {
         setToastMsg(local.error);
         console.log(error);
       });
   };
   const screenHandler = () => {
-    navigation.navigate('Register', {routeName: 'Sign up'});
+    navigation.navigate('Register', {routeName: local.register});
   };
 
   return (

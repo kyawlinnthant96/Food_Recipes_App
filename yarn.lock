@@ -1404,6 +1404,16 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@react-native-community/blur@^4.2.0":
+  "integrity" "sha512-StgP5zQJOCHqDRjmcKnzVkJ920S6DYBKRJfigSUnlkNQp+HzZtVtyKq0j5a7x84NtHcV7j8Uy5mz1Lx9ZKRKfA=="
+  "resolved" "https://registry.npmjs.org/@react-native-community/blur/-/blur-4.2.0.tgz"
+  "version" "4.2.0"
+
+"@react-native-community/checkbox@^0.5.12":
+  "integrity" "sha512-Dd3eiAW7AkpRgndwKGdgQ6nNgEmZlVD8+KAOBqwjuZQ/M67BThXJ9Ni+ydpPjNm4e28KXmIILfkvhcDt0ZoFTQ=="
+  "resolved" "https://registry.npmjs.org/@react-native-community/checkbox/-/checkbox-0.5.12.tgz"
+  "version" "0.5.12"
+
 "@react-native-community/cli-clean@^8.0.4":
   "integrity" "sha512-IwS1M1NHg6+qL8PThZYMSIMYbZ6Zbx+lIck9PLBskbosFo24M3lCOflOl++Bggjakp6mR+sRXxLMexid/GeOsQ=="
   "resolved" "https://registry.npmjs.org/@react-native-community/cli-clean/-/cli-clean-8.0.4.tgz"
@@ -6233,6 +6243,16 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.7.tgz"
   "version" "0.0.7"
 
+"react-native-image-crop-picker@^0.38.0":
+  "integrity" "sha512-FaLASXOP7R23pi20vMiVlXl0Y7cwTdl7y7yBqrlrsSH9gl9ibsU5y4mYWPYRbe8x9F/3zPGUE+1F0Gj/QF/peg=="
+  "resolved" "https://registry.npmjs.org/react-native-image-crop-picker/-/react-native-image-crop-picker-0.38.0.tgz"
+  "version" "0.38.0"
+
+"react-native-image-picker@^4.8.5":
+  "integrity" "sha512-+pQxkjO8cKv4RKTHOFS0fSHQ11HkWgb+imUPSOS8mwoChkR33aSuzV/6P4t9JCJgsus4qLAlB6BUosdIxw7GTA=="
+  "resolved" "https://registry.npmjs.org/react-native-image-picker/-/react-native-image-picker-4.8.5.tgz"
+  "version" "4.8.5"
+
 "react-native-linear-gradient@^2.6.2":
   "integrity" "sha512-Z8Xxvupsex+9BBFoSYS87bilNPWcRfRsGC0cpJk72Nxb5p2nEkGSBv73xZbEHnW2mUFvP+huYxrVvjZkr/gRjQ=="
   "resolved" "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.6.2.tgz"
@@ -6268,6 +6288,11 @@
     "react-freeze" "^1.0.0"
     "warn-once" "^0.1.0"
 
+"react-native-select-dropdown@^2.0.4":
+  "integrity" "sha512-bv8iznvf04FThqCkkD4kxlbNjo2d69yLcEe3nUwalQ6ea2NXqUJRQ5uUr1SEDSCH8l6IQlmog8rkHthrLEzQ9A=="
+  "resolved" "https://registry.npmjs.org/react-native-select-dropdown/-/react-native-select-dropdown-2.0.4.tgz"
+  "version" "2.0.4"
+
 "react-native-svg@^12.4.3":
   "integrity" "sha512-8OF+vvXsI854YlHBOQkanNcyio+7oQO0nQsS/Noji2VmPoMnLiJiMaxmOD9RHxGkbbo7lzbYWdxVdNibjN/8IA=="
   "resolved" "https://registry.npmjs.org/react-native-svg/-/react-native-svg-12.4.3.tgz"
@@ -6276,7 +6301,7 @@
     "css-select" "^5.1.0"
     "css-tree" "^1.1.3"
 
-"react-native@*", "react-native@>=0.35", "react-native@>=0.46", "react-native@>=0.50.0", "react-native@>=0.59", "react-native@0.69.3":
+"react-native@*", "react-native@>= 0.62", "react-native@>=0.35", "react-native@>=0.40.0", "react-native@>=0.46", "react-native@>=0.50.0", "react-native@>=0.59", "react-native@0.69.3":
   "integrity" "sha512-SyGkcoEUa/BkO+wKVnv4OsnLSNfUM5zLNXS3iT/3eXjKX91/FKBH/nfR9BE1c60X5LQe/P5QYqr6WPX3TRSQkA=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.69.3.tgz"
   "version" "0.69.3"

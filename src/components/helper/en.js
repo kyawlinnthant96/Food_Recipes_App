@@ -1,6 +1,5 @@
 export default {
   // Title
-  welcomeText: 'Cooking a Delicious Food Easily',
   logHeader: 'Welcome!',
   login: 'Login',
   regHeader: 'Register Now!',

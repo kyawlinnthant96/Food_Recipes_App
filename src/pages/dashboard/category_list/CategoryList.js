@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -20,57 +20,92 @@ import {getNumberOfRecipes} from '@data/MockData';
 
 // Styles
 import styles from './style';
+import {COLORS, FONTS, SIZES} from '@constants';
+
+// components
+import {
+  CategoryCard,
+  HeaderBar,
+  RecipeCard,
+  Trending,
+  CategoryHeader,
+  setToastMsg,
+} from '@components';
+
+// context
+import {DataContext} from '../../../context/DataContext/DataContext';
 
 const CategoryList = ({navigation}) => {
+  const {info} = useContext(DataContext);
   const dispatch = useDispatch();
-  const catData = useSelector(state => state.catList.categoryLists);
-  const recipesData = useSelector(state => state.recList.recipesList);
+  const catData = useSelector((state) => state.catList.categoryLists);
+  const recipesData = useSelector((state) => state.recList.recipesList);
+
+  const addLoadData = () => (
+    dispatch(actionCat.addToCat(categories)),
+    dispatch(actionRec.loadRecList(recipes)),
+    dispatch(actionIng.loadIngList(ingredients)),
+    console.log('run')
+  );
 
   useEffect(() => {
-    dispatch(actionCat.addToCat(categories));
-    dispatch(actionRec.loadRecList(recipes));
-    dispatch(actionIng.loadIngList(ingredients));
+    addLoadData();
+    return addLoadData;
   }, []);
 
-  const detailList = data => {
+  const detailList = (data) => {
     const title = data.name;
     navigation.navigate('CatDetail', {data, title});
   };
 
-  const renderComponent = ({item}) => {
+  const goToRecipeLists = () => {
+    navigation.navigate('Search', {screen: 'Recipe'});
+  };
+
+  const recDetailHandler = (data) => {
+    navigation.navigate('ItemDetail', {data});
+  };
+
+  const renderCat = ({item}) => {
     return (
-      <TouchableOpacity activeOpacity={0.7} onPress={() => detailList(item.id)}>
-        <SafeAreaView style={styles.listContainer}>
-          <ImageBackground
-            source={{uri: item.photo_url}}
-            resizeMode="cover"
-            style={styles.catImage}>
-            <View style={styles.titleContainer}>
-              <Text style={styles.catTitle}>{item.name}</Text>
-              <Text style={styles.numberOfRecipes}>
-                {getNumberOfRecipes(item.id, recipesData)} recipes
-              </Text>
-            </View>
-          </ImageBackground>
-        </SafeAreaView>
-      </TouchableOpacity>
+      <CategoryCard
+        containerStyle={styles.catCardContainer}
+        categoryItem={item}
+        numOfRecByCat={getNumberOfRecipes(item.id, recipesData)}
+        onPress={detailList}
+      />
     );
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Category List</Text>
-      </View>
-
+    <SafeAreaView style={styles.container}>
       <FlatList
         data={catData}
+        keyExtractor={(item) => `${item.id}`}
+        keyboardDismissMode="on-drag"
         showsVerticalScrollIndicator={false}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={renderComponent}
-        contentContainerStyle={{paddingBottom: 80}}
+        ListHeaderComponent={
+          <View>
+            {/* Header */}
+            <HeaderBar userName={info.username} userPhoto={info.photo_url} />
+            {/* See Recipes Card*/}
+            <RecipeCard
+              noOfRecipes={recipesData.length}
+              onPress={goToRecipeLists}
+            />
+            {/* Trending Section */}
+            <Trending
+              trendData={recipesData}
+              recDetailAction={recDetailHandler}
+            />
+            {/* category header */}
+            <CategoryHeader />
+          </View>
+        }
+        renderItem={renderCat}
+        ListFooterComponent={<View style={{marginBottom: 100}} />}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
